@@ -259,7 +259,7 @@
   </div>
 
   <script>
-    const API = 'http://localhost:3000';
+    const BASE_URL = window.location.origin;
     const SIGNUP_DELAY_MS = 1500;
 
     function showPage(pageId) {
@@ -302,7 +302,7 @@
         password: form.password.value
       };
       try {
-        const res = await fetch(API + '/signup', {
+        const res = await fetch(BASE_URL + '/signup', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(body)
@@ -332,7 +332,7 @@
         password: form.password.value
       };
       try {
-        const res = await fetch(API + '/login', {
+        const res = await fetch(BASE_URL + '/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(body)
