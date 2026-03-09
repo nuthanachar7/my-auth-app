@@ -10,6 +10,7 @@
  * 8. Uses existing db.js, .env, ca.pem (via DB_SSL_CA)
  */
 require('dotenv').config();
+const path = require('path');
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -18,6 +19,7 @@ const pool = require('./db');
 const app = express();
 app.use(express.json());
 app.use(express.static(__dirname));
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
 
 // ---------- Startup: required env variables ----------
 const REQUIRED_ENV = ['DB_HOST', 'DB_PORT', 'DB_USER', 'DB_PASSWORD', 'DB_NAME', 'DB_SSL_CA', 'JWT_SECRET', 'PORT'];
